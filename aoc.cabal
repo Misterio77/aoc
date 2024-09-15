@@ -1,0 +1,15 @@
+cabal-version:      3.8
+name:               aoc
+version:            0.1.0.0
+
+synopsis:   My attempt at completing the entirety of Advent of Code
+author:     Gabriel Fontes
+maintainer: hi@m7.rs
+license:    Unlicense
+
+executable y2015-d1
+    main-is:          day1.hs
+    hs-source-dirs:   src/2015
+    default-language: GHC2021
+    build-depends:
+        base ^>= 4.18
