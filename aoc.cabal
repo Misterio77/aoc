@@ -8,8 +8,7 @@ maintainer: hi@m7.rs
 license:    Unlicense
 
 executable y2015-d1
-    main-is:          day1.hs
-    hs-source-dirs:   src/2015
+    main-is:          Main.hs
+    hs-source-dirs:   src/2015/day1
     default-language: GHC2021
-    build-depends:
-        base ^>= 4.18
+    build-depends:    base ^>= 4.18

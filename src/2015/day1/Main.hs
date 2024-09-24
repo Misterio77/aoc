@@ -11,6 +11,7 @@ part1 = sum . map parenthesisToInt
 part2 :: String -> Int
 part2 = fst . head . filter ((== -1) . snd) . zip [0 ..] . scanl (+) 0 . map parenthesisToInt
 
+main :: IO ()
 main = do
   input <- getContents
   print $ part1 input
