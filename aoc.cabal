@@ -24,4 +24,5 @@ executable y2015-d3
     main-is:          Main.hs
     hs-source-dirs:   src/2015/day3
     default-language: GHC2021
+    other-modules:    Direction
     build-depends:    base ^>= 4.18
