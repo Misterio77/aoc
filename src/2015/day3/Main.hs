@@ -1,31 +1,36 @@
 module Main where
 
-import Data.List (nub)
+import Data.List (mapAccumL, nub)
+import Data.Maybe (mapMaybe)
+import Direction (Direction (East, North, South, West))
+import Direction qualified
 
-visitHouse :: (Int, Int) -> Char -> (Int, Int)
-visitHouse (x, y) 'v' = (x, y + 1)
-visitHouse (x, y) '^' = (x, y - 1)
-visitHouse (x, y) '>' = (x + 1, y)
-visitHouse (x, y) '<' = (x - 1, y)
-visitHouse (x, y) _ = (x, y)
+type House = (Int, Int)
 
-visitHouses :: [Char] -> [(Int, Int)] -> [(Int, Int)]
-visitHouses [] visited = visited
-visitHouses (direction : directions) visited = visitHouses directions (new : visited)
-  where
-    new = visitHouse (head visited) direction
+-- Filter a list by applying a predicate to its index
+filterIdx :: (Int -> Bool) -> [a] -> [a]
+filterIdx p xs = [x | (x, i) <- zip xs [0 ..], p i]
 
-part1 :: String -> Int
-part1 directions = length $ nub visited
-  where
-    visited = visitHouses directions [(0, 0)]
+-- Given a location and a direction, return next  location
+visitHouse :: House -> Direction -> House
+visitHouse (x, y) East = (x + 1, y)
+visitHouse (x, y) North = (x, y + 1)
+visitHouse (x, y) South = (x, y - 1)
+visitHouse (x, y) West = (x - 1, y)
 
-part2 :: String -> String
-part2 = error "Not implemented"
+-- Given a list of directions, return visited locations
+visitHouses :: [Direction] -> [House]
+visitHouses = foldl (\ps d -> visitHouse (head ps) d : ps) [(0, 0)]
 
-main :: IO ()
+-- Given a list of directions, return amount of unique positions visited
+part1 :: [Direction] -> Int
+part1 d = length $ nub $ visitHouses d
+
+-- Given a list of directions, return amount of unique positions visited by alternating visitors
+part2 :: [Direction] -> Int
+part2 d = length $ nub $ visitHouses (filterIdx even d) ++ visitHouses (filterIdx odd d)
+
 main = do
-  input <- getContents
-  print $ part1 input
-
--- print $ part2 input
+  directions <- mapMaybe Direction.fromChar <$> getContents
+  print $ part1 directions
+  print $ part2 directions
