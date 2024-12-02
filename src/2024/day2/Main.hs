@@ -9,12 +9,11 @@ readReports :: String -> [[Int]]
 readReports = map (map read . words) . lines
 
 isSafe :: [Int] -> Bool
-isSafe report
-  | all (`elem` [1, 2, 3]) changes = True
-  | all (`elem` [-1, -2, -3]) changes = True
-  | otherwise = False
+isSafe report =  isSafeAsc || isSafeDesc
   where
     changes = zipWith (-) (init report) (tail report)
+    isSafeAsc = all (`elem` [1, 2, 3]) changes
+    isSafeDesc = all (`elem` [-1, -2, -3]) changes
 
 isAlmostSafe :: [Int] -> Bool
 isAlmostSafe report = any isSafe (oneRemoved report)
