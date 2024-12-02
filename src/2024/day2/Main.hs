@@ -5,8 +5,8 @@ deleteAt idx xs = lft ++ rgt
 oneRemoved :: [Int] -> [[Int]]
 oneRemoved xs = map (`deleteAt` xs) [0..length xs-1]
 
-getInputReports :: String -> [[Int]]
-getInputReports = map (map read . words) . lines
+readReports :: String -> [[Int]]
+readReports = map (map read . words) . lines
 
 isSafe :: [Int] -> Bool
 isSafe report
@@ -27,6 +27,6 @@ part2 = length . filter isAlmostSafe
 
 main :: IO ()
 main = do
-  reports <- getInputReports <$> getContents
+  reports <- readReports <$> getContents
   print $ part1 reports
   print $ part2 reports
