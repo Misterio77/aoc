@@ -33,6 +33,30 @@ executable y2015-d5
     default-language: GHC2021
     build-depends:    base ^>= 4.18
 
+executable y2022-d1
+    main-is:          Main.hs
+    hs-source-dirs:   src/2022/day1
+    default-language: GHC2021
+    build-depends:    base ^>= 4.18, split ^>= 0.2
+
+executable y2022-d2
+    main-is:          Main.hs
+    hs-source-dirs:   src/2022/day2
+    default-language: GHC2021
+    build-depends:    base ^>= 4.18, split ^>= 0.2
+
+executable y2022-d3
+    main-is:          Main.hs
+    hs-source-dirs:   src/2022/day3
+    default-language: GHC2021
+    build-depends:    base ^>= 4.18, split ^>= 0.2
+
+executable y2022-d4
+    main-is:          Main.hs
+    hs-source-dirs:   src/2022/day4
+    default-language: GHC2021
+    build-depends:    base ^>= 4.18, split ^>= 0.2
+
 executable y2024-d1
     main-is:          Main.hs
     hs-source-dirs:   src/2024/day1

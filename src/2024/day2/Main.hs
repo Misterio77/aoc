@@ -28,6 +28,5 @@ part2 = length . filter isAlmostSafe
 main :: IO ()
 main = do
   reports <- getInputReports <$> getContents
-  print $ map oneRemoved reports
   print $ part1 reports
   print $ part2 reports
