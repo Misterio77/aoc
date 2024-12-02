@@ -2,12 +2,15 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-24.05";
     systems.url = "github:nix-systems/default-linux";
+    gitignore.url = "github:hercules-ci/gitignore.nix";
+    gitignore.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
     self,
     nixpkgs,
     systems,
+    gitignore,
     ...
   }: let
     eachSystem = f:
@@ -21,7 +24,7 @@
     packages = eachSystem ({pkgs, ...}: {
       default = pkgs.haskellPackages.developPackage {
         name = "aoc";
-        root = ./.;
+        root = gitignore.lib.gitignoreSource ./.;
       };
     });
     devShells = eachSystem ({pkgs, packages, ...}: {
