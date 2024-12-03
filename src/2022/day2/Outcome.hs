@@ -1,6 +1,6 @@
 module Outcome where
 
-import Shape (Shape (Paper, Rock, Scissors), losesTo, winsFrom)
+import Shape (Shape, losesTo, winsFrom)
 
 data Outcome = Win | Lose | Draw
 

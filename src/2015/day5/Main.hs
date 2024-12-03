@@ -12,8 +12,7 @@ hasBadStrings _ = error "TODO"
 isNice :: String -> Bool
 isNice s = vowelCount s >= 3 && hasTwiceLetter s && not (hasBadStrings s)
 
-part1 = isNice
-
+main :: IO ()
 main = do
   input <- getContents
   print $ isNice input

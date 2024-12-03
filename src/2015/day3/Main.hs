@@ -1,6 +1,6 @@
 module Main where
 
-import Data.List (mapAccumL, nub)
+import Data.List (nub)
 import Data.Maybe (mapMaybe)
 import Direction (Direction (East, North, South, West))
 import Direction qualified
@@ -30,6 +30,7 @@ part1 d = length $ nub $ visitHouses d
 part2 :: [Direction] -> Int
 part2 d = length $ nub $ visitHouses (filterIdx even d) ++ visitHouses (filterIdx odd d)
 
+main :: IO ()
 main = do
   directions <- mapMaybe Direction.fromChar <$> getContents
   print $ part1 directions

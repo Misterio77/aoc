@@ -1,6 +1,4 @@
-import Instruction (Instruction)
 import Instruction qualified (execute, fromString)
-import Text.Regex.TDFA (getAllTextMatches, getAllTextSubmatches, (=~))
 
 part1 :: String -> Int
 part1 input = Instruction.execute (Instruction.fromString input False)

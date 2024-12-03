@@ -1,3 +1,4 @@
+deleteAt :: Int -> [a] -> [a]
 deleteAt idx xs = lft ++ rgt
   where (lft, _:rgt) = splitAt idx xs
 

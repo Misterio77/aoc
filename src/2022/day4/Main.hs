@@ -1,6 +1,5 @@
 module Main where
 
-import Data.Char (digitToInt)
 import Data.List.Split (splitOneOf)
 
 -- Check whether the lists intercept

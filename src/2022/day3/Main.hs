@@ -3,7 +3,6 @@ module Main where
 import Data.Char (isLower, isUpper, ord)
 import Data.List (group)
 import Data.List.Split (chunksOf)
-import GHC.List (splitAt)
 
 dedup :: (Eq a) => [a] -> [a]
 dedup = map head . group
