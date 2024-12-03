@@ -69,3 +69,10 @@ executable y2024-d2
     hs-source-dirs:   src/2024/day2
     default-language: GHC2021
     build-depends:    base ^>= 4.18
+
+executable y2024-d3
+    main-is:          Main.hs
+    hs-source-dirs:   src/2024/day3
+    default-language: GHC2021
+    other-modules:    Instruction
+    build-depends:    base ^>= 4.18, regex-tdfa ^>= 1.3
